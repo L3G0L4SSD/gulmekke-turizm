@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.gulmekketurizm.com/sitemap.xml
+Sitemap: https://gulmekketurizm.tr/sitemap.xml
