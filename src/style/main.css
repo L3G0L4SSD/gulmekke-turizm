@@ -180,11 +180,12 @@ body {
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 1.25rem 0;
+  padding: 0.95rem 0;
   transition: all 0.4s ease;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
-  backdrop-filter: blur(2px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(5, 18, 13, 0.62);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .site-header.scrolled {
@@ -234,11 +235,12 @@ body {
 
 .logo-title {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.08em;
   color: #ffffff;
   line-height: 1.15;
+  white-space: nowrap;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
@@ -265,15 +267,16 @@ body {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.35rem;
 }
 
 .nav-item {
   color: rgba(255, 255, 255, 0.92);
   text-decoration: none;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
   font-weight: 600;
+  white-space: nowrap;
   position: relative;
   transition: color 0.3s ease;
   padding: 0.5rem 0;
@@ -412,26 +415,36 @@ body {
 }
 
 @media (max-width: 1100px) {
-  .nav-links, .header-phone-pill, .btn-insta {
+  .nav-links, .header-phone-pill, .btn-insta, #open-trip-builder-btn {
     display: none !important;
+  }
+  .mobile-nav-toggle {
+    display: flex !important;
+  }
+  .logo-title {
+    white-space: nowrap;
   }
 }
 
 @media (max-width: 550px) {
+  .header-container {
+    padding: 0 1rem !important;
+    gap: 0.5rem !important;
+  }
+  .brand-logo {
+    gap: 0.55rem !important;
+  }
   .brand-logo-img {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
   }
   .logo-title {
     font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
   }
   .logo-sub {
-    font-size: 0.52rem;
-    letter-spacing: 0.08em;
-  }
-  .btn-royal {
-    padding: 0.6rem 1.05rem;
-    font-size: 0.78rem;
+    display: none !important;
   }
 }
 
@@ -534,8 +547,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-top: clamp(5.2rem, 9.5vh, 6.8rem);
-  padding-bottom: 2.2rem;
+  padding-top: clamp(6.5rem, 12vh, 8rem);
+  padding-bottom: 3.5rem;
   overflow: hidden;
   background: #040e0a;
 }
@@ -585,19 +598,30 @@ body {
   }
 }
 
-/* Sinematik Işık & Gölgelendirme (Aydınlık, Canlı ve Net Görseller) */
+/* Sinematik Işık & Gölgelendirme (Apple Tarzı Yüksek Kontrast Scrim) */
 .hero-vignette-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(4, 14, 10, 0.70) 0%,
-    rgba(4, 14, 10, 0.46) 38%,
-    rgba(4, 14, 10, 0.12) 65%,
-    rgba(4, 14, 10, 0.02) 100%
+    rgba(4, 15, 10, 0.88) 0%,
+    rgba(4, 15, 10, 0.68) 42%,
+    rgba(4, 15, 10, 0.25) 72%,
+    rgba(4, 15, 10, 0.08) 100%
   );
   z-index: 3;
   pointer-events: none;
+}
+
+@media (max-width: 960px) {
+  .hero-vignette-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(4, 15, 10, 0.78) 0%,
+      rgba(4, 15, 10, 0.66) 48%,
+      rgba(4, 15, 10, 0.86) 100%
+    );
+  }
 }
 
 /* Metin İçerik Kapsayıcısı */
@@ -656,37 +680,35 @@ body {
 .hero-line-calligraphy {
   display: block;
   font-family: var(--font-arabic), var(--font-serif);
-  font-size: clamp(1.8rem, 3.2vw, 2.75rem);
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
   font-style: italic;
   font-weight: 400;
-  color: #fdfbf7;
-  line-height: 1.16;
+  color: #f5dfa0;
+  line-height: 1.2;
   letter-spacing: 0.01em;
-  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.85);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.9);
 }
 
 .hero-line-gold {
   display: block;
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.8vw, 3.35rem);
+  font-size: clamp(2.1rem, 4vw, 3.45rem);
   font-weight: 800;
-  line-height: 1.1;
-  margin-top: 0.25rem;
-  letter-spacing: -0.01em;
-  background: linear-gradient(135deg, #ffffff 0%, #faeec9 35%, #d4af37 75%, #a67c1e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.8));
+  line-height: 1.08;
+  margin-top: 0.3rem;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.85);
 }
 
 .hero-subtext {
-  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
-  color: rgba(247, 250, 248, 0.88);
-  line-height: 1.62;
+  font-size: clamp(0.92rem, 1.08vw, 1.02rem);
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.65;
   max-width: 560px;
-  margin: 0 0 1.4rem 0;
+  margin: 0 0 1.6rem 0;
   font-weight: 400;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
 }
 
 .hero-cta-group {
@@ -726,36 +748,35 @@ body {
   box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
 }
 
-/* Lüks WhatsApp Butonu (Hero) */
+/* Lüks WhatsApp Butonu (Hero - Net & Canlı) */
 .btn-luxury-whatsapp {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  background: rgba(37, 211, 102, 0.15);
-  border: 1px solid rgba(37, 211, 102, 0.55);
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 9999px;
   padding: 0.75rem 1.75rem;
   color: #ffffff;
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   cursor: pointer;
-  backdrop-filter: blur(16px);
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.22);
+  box-shadow: 0 6px 24px rgba(18, 140, 126, 0.42);
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
 .btn-luxury-whatsapp:hover {
-  background: rgba(37, 211, 102, 0.32);
-  border-color: #25d366;
+  background: linear-gradient(135deg, #2be06f 0%, #159e8f 100%);
+  border-color: rgba(255, 255, 255, 0.45);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.45);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.52);
 }
 
 .btn-luxury-whatsapp .btn-wa-icon {
-  color: #25d366;
+  color: #ffffff;
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
@@ -2885,21 +2906,23 @@ body {
 
 @media (max-width: 900px) {
   .hero-section {
-    padding-top: 6.5rem;
-    padding-bottom: 3.5rem;
+    padding-top: 7.25rem;
+    padding-bottom: 3rem;
     min-height: auto;
   }
 
   .hero-content-overlay {
-    padding: 0 1.75rem;
+    padding: 0 1.5rem;
     max-width: 100%;
   }
 
   .hero-sanctuary-nav {
     position: static;
-    margin-top: 2rem;
+    margin: 1.75rem auto 0;
     display: inline-flex;
     justify-content: center;
+    width: auto;
+    max-width: calc(100% - 2rem);
   }
 
   .hero-scroll-indicator {
@@ -2914,7 +2937,7 @@ body {
   }
 
   .hero-section {
-    padding-top: 6rem;
+    padding-top: 6.75rem;
     padding-bottom: 2.5rem;
   }
 
@@ -2928,30 +2951,25 @@ body {
   .hero-cta-group button {
     width: 100%;
     justify-content: center;
-    padding: 0.9rem 1.5rem;
-  }
-
-  .hero-stats-glass {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.85rem 1.25rem;
-    width: 100%;
-    border-radius: 16px;
-    padding: 1rem 1.25rem;
-  }
-
-  .hero-stats-glass .mini-divider {
-    display: none;
-  }
-
-  .hero-stats-glass .mini-stat {
-    align-items: flex-start;
+    padding: 0.95rem 1.5rem;
   }
 
   .hero-sanctuary-nav {
-    width: 100%;
+    width: calc(100% - 2rem);
+    margin: 1.5rem auto 0;
     justify-content: center;
     flex-wrap: wrap;
+    border-radius: 20px;
+    padding: 0.35rem;
+    gap: 0.4rem;
+  }
+
+  .sanctuary-pill {
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.72rem;
+    white-space: nowrap;
   }
 }
 
@@ -2961,15 +2979,15 @@ body {
   }
 
   .hero-line-calligraphy {
-    font-size: clamp(1.75rem, 7vw, 2.3rem);
+    font-size: clamp(1.55rem, 6.2vw, 2.1rem);
   }
 
   .hero-line-gold {
-    font-size: clamp(1.9rem, 7.8vw, 2.6rem);
+    font-size: clamp(1.95rem, 7.8vw, 2.55rem);
   }
 
   .hero-subtext {
-    font-size: 0.92rem;
+    font-size: 0.94rem;
     line-height: 1.65;
   }
 }

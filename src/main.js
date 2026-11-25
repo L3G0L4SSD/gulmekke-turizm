@@ -228,48 +228,19 @@ function setupRevealAnimations() {
  * Sinematik Hero Açılış Animasyonu (Ekometal Tarzı GSAP Timeline)
  */
 function initHeroEntranceTimeline() {
+  // Her şey ilk karede %100 görünür (LCP ve anlık okunurluk için opacity: 0 kullanılmaz)
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-  // 1. Arka plan görseli hafifçe ölçeklenerek ve açılarak sahneye girer
-  tl.fromTo('.hero-cinematic-bg', 
-    { scale: 1.08, filter: 'brightness(0.7)' },
-    { scale: 1.0, filter: 'brightness(1)', duration: 2.2, ease: 'power2.out' },
+  tl.fromTo('.hero-cinematic-bg',
+    { scale: 1.04 },
+    { scale: 1.0, duration: 1.4, ease: 'power2.out' },
     0
   );
 
-  // 2. Header yukarıdan süzülür
-  tl.fromTo('.site-header',
-    { y: -35, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1.1 },
-    0.15
-  );
-
-  // 3. Edebi Kutsal Topraklara ve Hürmet ve İtimatla Vuslat başlığı
-  tl.fromTo(['.hero-line-calligraphy', '.hero-line-gold'],
-    { y: 38, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1.1, stagger: 0.18 },
-    0.35
-  );
-
-  // 4. Açıklama metni
-  tl.fromTo('.hero-subtext',
-    { y: 20, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.9 },
-    0.65
-  );
-
-  // 5. Butonlar (hafif esnek pop efekti)
-  tl.fromTo('.hero-cta-group > *',
-    { y: 18, opacity: 0, scale: 0.96 },
-    { y: 0, opacity: 1, scale: 1, duration: 0.85, stagger: 0.12, ease: 'back.out(1.3)' },
-    0.85
-  );
-
-  // 6. Sağ alttaki Mekke & Medine geçiş butonu
-  tl.fromTo('.hero-sanctuary-nav',
-    { y: 20, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.9 },
-    1.05
+  tl.fromTo(['.hero-line-calligraphy', '.hero-line-gold', '.hero-subtext'],
+    { y: 14 },
+    { y: 0, duration: 0.65, stagger: 0.08, clearProps: 'transform' },
+    0
   );
 }
 
