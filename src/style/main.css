@@ -63,6 +63,8 @@ html {
   scroll-behavior: auto; /* Handled by Lenis for ultra-fluidity */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
@@ -70,7 +72,8 @@ body {
   background: var(--bg-obsidian);
   color: var(--text-pearl);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 /* Noise overlay - ultra subtle on light theme */
@@ -1954,31 +1957,41 @@ body {
     display: none;
   }
   .apple-highlights-swiper {
-    height: 500px !important;
+    height: auto !important;
+    padding-bottom: 12px;
   }
   .apple-highlights-swiper .swiper-wrapper {
-    height: 480px !important;
+    height: auto !important;
+    align-items: stretch;
   }
   .apple-card-slide {
-    width: 90vw !important;
-    max-width: 90vw !important;
-    height: 480px !important;
+    width: calc(100vw - 32px) !important;
+    max-width: 440px !important;
+    height: auto !important;
+    min-height: 450px;
     border-radius: 24px;
   }
   .apple-highlight-card {
+    height: 100%;
+    min-height: 450px;
     border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
   .card-content-overlay {
-    padding: 1.75rem;
+    position: relative;
+    z-index: 3;
+    padding: 1.75rem 1.35rem !important;
   }
   .card-headline {
-    font-size: 1.75rem;
+    font-size: 1.55rem;
   }
   .card-subhead {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
   }
   .card-desc {
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     line-height: 1.5;
   }
 }
@@ -2057,6 +2070,30 @@ body {
   gap: 2rem;
   margin-bottom: 4rem;
   box-shadow: 0 15px 40px rgba(13, 74, 52, 0.2);
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .instagram-banner-card {
+    padding: 1.75rem 1.25rem;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  .insta-banner-left {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+    max-width: 100% !important;
+  }
+  .instagram-banner-card .btn-royal {
+    width: 100%;
+    max-width: 100%;
+    white-space: normal !important;
+    text-align: center;
+    line-height: 1.35;
+    padding: 0.85rem 1rem !important;
+    font-size: 0.82rem !important;
+  }
 }
 
 .insta-banner-left {
@@ -2926,24 +2963,71 @@ body {
    ============================================================ */
 
 @media (max-width: 900px) {
+  /* SEÇENEK A: APPLE SPLIT-HERO (Üstte 4K Saf Fotoğraf, Altta Temiz Koyu Zümrüt Sahne) */
   .hero-section {
-    padding-top: 7.25rem;
-    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding-top: 62px; /* Tam olarak sabit header yüksekliği kadar */
+    padding-bottom: 2.25rem;
     min-height: auto;
+    background: linear-gradient(180deg, #04130d 0%, #072217 100%);
   }
 
-  .hero-content-overlay {
-    padding: 0 1.5rem;
-    max-width: 100%;
+  .hero-cinematic-bg {
+    position: relative !important;
+    inset: auto !important;
+    width: 100%;
+    height: 42vh;
+    min-height: 270px;
+    max-height: 360px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .hero-bg-layer.hero-bg-kaaba {
+    background-position: center 45% !important;
+  }
+
+  .hero-bg-layer.hero-bg-medina {
+    background-position: center 42% !important;
+  }
+
+  /* Fotoğrafın üstünde yazı yok, sadece alt kenarı alt sahneye yumuşakça erir */
+  .hero-vignette-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(4, 19, 13, 0.15) 0%,
+      rgba(4, 19, 13, 0) 35%,
+      rgba(4, 19, 13, 0) 65%,
+      rgba(4, 19, 13, 1) 100%
+    ) !important;
   }
 
   .hero-sanctuary-nav {
-    position: static;
-    margin: 1.75rem auto 0;
+    position: relative;
+    bottom: auto;
+    right: auto;
+    order: 2;
+    margin: -22px auto 1.35rem;
     display: inline-flex;
     justify-content: center;
     width: auto;
     max-width: calc(100% - 2rem);
+    background: rgba(6, 24, 17, 0.92);
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  .hero-content-overlay {
+    order: 3;
+    padding: 0 1.25rem;
+    max-width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-scroll-indicator {
@@ -2957,15 +3041,21 @@ body {
     display: none !important;
   }
 
-  .hero-section {
-    padding-top: 6.75rem;
-    padding-bottom: 2.5rem;
+  /* Kullanıcı talebi: Mobilde uzun açıklama paragrafı gizlenir, net başlık ve butonlar öne çıkar */
+  .hero-subtext {
+    display: none !important;
+  }
+
+  .hero-headline {
+    margin-bottom: 1.35rem;
   }
 
   .hero-cta-group {
+    width: 100%;
     flex-direction: column;
     align-items: stretch;
-    gap: 0.85rem;
+    gap: 0.75rem;
+    margin-bottom: 0;
   }
 
   .hero-cta-group a,
@@ -2977,19 +3067,18 @@ body {
 
   .hero-sanctuary-nav {
     width: calc(100% - 2rem);
-    margin: 1.5rem auto 0;
     justify-content: center;
-    flex-wrap: wrap;
-    border-radius: 20px;
-    padding: 0.35rem;
-    gap: 0.4rem;
+    flex-wrap: nowrap;
+    border-radius: 9999px;
+    padding: 0.3rem;
+    gap: 0.3rem;
   }
 
   .sanctuary-pill {
-    flex: 1 1 auto;
+    flex: 1 1 0;
     justify-content: center;
-    padding: 0.45rem 0.75rem;
-    font-size: 0.72rem;
+    padding: 0.45rem 0.5rem;
+    font-size: 0.7rem;
     white-space: nowrap;
   }
 }
@@ -3480,22 +3569,30 @@ body {
 
   /* Highlights Swiper in Kutsal Yolculuk */
   .apple-highlights-swiper {
-    height: 480px !important;
+    height: auto !important;
+    padding-bottom: 12px;
   }
 
   .apple-highlights-swiper .swiper-wrapper {
-    height: 460px !important;
+    height: auto !important;
+    align-items: stretch;
   }
 
   .apple-card-slide {
     width: calc(100vw - 32px) !important;
     max-width: calc(100vw - 32px) !important;
-    height: 460px !important;
+    height: auto !important;
+    min-height: 440px;
     margin: 0 8px !important;
   }
 
+  .apple-highlight-card {
+    height: 100%;
+    min-height: 440px;
+  }
+
   .card-content-overlay {
-    padding: 1.25rem !important;
+    padding: 1.65rem 1.25rem !important;
   }
 
   .card-headline {
