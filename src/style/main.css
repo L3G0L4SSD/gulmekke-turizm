@@ -199,11 +199,32 @@ body {
 .header-container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
+}
+
+@media (max-width: 1360px) {
+  .header-container {
+    padding: 0 1.15rem;
+    gap: 0.65rem;
+  }
+  .nav-links {
+    gap: 1rem !important;
+  }
+  .nav-item {
+    font-size: 0.78rem !important;
+  }
+  .header-phone-pill {
+    padding: 0.45rem 0.75rem !important;
+    font-size: 0.78rem !important;
+  }
+  .site-header .btn-royal {
+    padding: 0.6rem 1.1rem !important;
+    font-size: 0.78rem !important;
+  }
 }
 
 .brand-logo {
