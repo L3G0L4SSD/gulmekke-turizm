@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 11. Sinematik Hero Açılış Animasyonu (Ekometal Tarzı GSAP Timeline)
   initHeroEntranceTimeline();
+
+  // 12. Apple-Grade Mobile Drawer Navigation & Sticky Action Bar
+  initMobileNav();
 });
 
 /**
@@ -57,6 +60,10 @@ function renderDynamicCompanyData() {
   if (headerWa) headerWa.href = defaultWhatsAppUrl;
   const heroWa = document.getElementById('hero-whatsapp-btn');
   if (heroWa) heroWa.href = defaultWhatsAppUrl;
+  const drawerWa = document.getElementById('mobile-drawer-wa');
+  if (drawerWa) drawerWa.href = defaultWhatsAppUrl;
+  const barWa = document.getElementById('mobile-bar-wa');
+  if (barWa) barWa.href = defaultWhatsAppUrl;
 
   // Render Room Types Section (#room-types-container)
   const roomTypesContainer = document.getElementById('room-types-container');
@@ -264,4 +271,58 @@ function initHeroEntranceTimeline() {
     { y: 0, opacity: 1, duration: 0.9 },
     1.05
   );
+}
+
+/**
+ * 12. Apple-Grade Mobile Drawer Navigation
+ */
+function initMobileNav() {
+  const toggleBtn = document.getElementById('mobile-nav-toggle');
+  const closeBtn = document.getElementById('mobile-nav-close');
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const backdrop = document.getElementById('mobile-drawer-backdrop');
+  const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+  if (!toggleBtn || !drawer) return;
+
+  function openDrawer() {
+    drawer.classList.add('active');
+    backdrop?.classList.add('active');
+    toggleBtn.classList.add('active');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('active');
+    backdrop?.classList.remove('active');
+    toggleBtn.classList.remove('active');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    if (drawer.classList.contains('active')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
+  closeBtn?.addEventListener('click', closeDrawer);
+  backdrop?.addEventListener('click', closeDrawer);
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeDrawer();
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('active')) {
+      closeDrawer();
+    }
+  });
 }

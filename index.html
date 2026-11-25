@@ -111,9 +111,93 @@
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </button>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Menüyü Aç" aria-expanded="false">
+          <span class="hamburger-line line-1"></span>
+          <span class="hamburger-line line-2"></span>
+          <span class="hamburger-line line-3"></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
+    <div class="mobile-drawer-inner">
+      <div class="mobile-drawer-header">
+        <div class="mobile-drawer-brand">
+          <img src="/assets/images/logo.jpg" alt="Logo" class="mobile-drawer-logo">
+          <div class="mobile-drawer-title-box">
+            <span class="mobile-drawer-title">GÜL MEKKE MÜKERREM</span>
+            <span class="mobile-drawer-sub">HAC & UMRE ORGANİZASYONLARI</span>
+          </div>
+        </div>
+        <button id="mobile-nav-close" class="mobile-nav-close" aria-label="Menüyü Kapat">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="mobile-nav-list">
+        <a href="#paketler" class="mobile-nav-link">
+          <span class="mobile-nav-num">01</span>
+          <span class="mobile-nav-text">Tur Programları & Fiyatlar</span>
+          <span class="mobile-nav-arrow">›</span>
+        </a>
+        <a href="#odalar" class="mobile-nav-link">
+          <span class="mobile-nav-num">02</span>
+          <span class="mobile-nav-text">Oda Seçenekleri (2'li, 3'lü, 4'lü)</span>
+          <span class="mobile-nav-arrow">›</span>
+        </a>
+        <a href="#guvenlik" class="mobile-nav-link">
+          <span class="mobile-nav-num">03</span>
+          <span class="mobile-nav-text">TÜRSAB & Diyanet Güvencesi</span>
+          <span class="mobile-nav-arrow">›</span>
+        </a>
+        <a href="#deneyim" class="mobile-nav-link">
+          <span class="mobile-nav-num">04</span>
+          <span class="mobile-nav-text">Kutsal Yolculuk Aşamaları</span>
+          <span class="mobile-nav-arrow">›</span>
+        </a>
+        <a href="#hizmetler" class="mobile-nav-link">
+          <span class="mobile-nav-num">05</span>
+          <span class="mobile-nav-text">Hizmetlerimiz & Rehberlik</span>
+          <span class="mobile-nav-arrow">›</span>
+        </a>
+        <a href="#rehber" class="mobile-nav-link">
+          <span class="mobile-nav-num">06</span>
+          <span class="mobile-nav-text">İbadet Rehberi & SSS</span>
+          <span class="mobile-nav-arrow">›</span>
+        </a>
+      </nav>
+
+      <div class="mobile-drawer-footer">
+        <div class="mobile-drawer-contacts">
+          <a href="tel:08502591486" class="mobile-contact-card">
+            <div class="contact-card-icon">📞</div>
+            <div class="contact-card-info">
+              <span class="contact-card-label">Çağrı Merkezi</span>
+              <strong class="contact-card-val">0850 259 14 86</strong>
+            </div>
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=905324308244" target="_blank" rel="noopener noreferrer" class="mobile-contact-card mobile-contact-wa" id="mobile-drawer-wa">
+            <div class="contact-card-icon">💬</div>
+            <div class="contact-card-info">
+              <span class="contact-card-label">WhatsApp Canlı Destek</span>
+              <strong class="contact-card-val">0532 430 82 44</strong>
+            </div>
+          </a>
+        </div>
+        <p class="mobile-drawer-address">
+          📍 Sultangazi / İSTANBUL (Merkez Müftülüğün Karşısı)
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="mobile-drawer-backdrop" class="mobile-drawer-backdrop"></div>
 
   <!-- 02. HERO: 4K SİNEMATİK KUTSAL BELDE VE VUSLAT -->
   <section class="hero-section" id="hero">
@@ -888,6 +972,30 @@
       </div>
     </div>
   </footer>
+
+  <!-- Mobile Fixed Bottom Action Bar (CRO Optimized) -->
+  <aside class="mobile-sticky-action-bar" id="mobile-sticky-bar" aria-label="Hızlı İletişim">
+    <div class="mobile-bar-inner">
+      <a href="tel:08502591486" class="mobile-bar-btn btn-call" aria-label="Çağrı Merkezini Ara">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
+        </svg>
+        <span>Ara (0850)</span>
+      </a>
+
+      <div class="mobile-bar-teaser">
+        <span class="teaser-kicker">GÜL MEKKE UMRE</span>
+        <strong class="teaser-price">1.200 $'dan</strong>
+      </div>
+
+      <a id="mobile-bar-wa" href="https://api.whatsapp.com/send?phone=905324308244" target="_blank" rel="noopener noreferrer" class="mobile-bar-btn btn-wa" aria-label="WhatsApp'tan Yazın">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.25 7.42C9.09 7.42 8.84 7.48 8.62 7.72C8.4 7.96 7.78 8.54 7.78 9.73C7.78 10.92 8.65 12.07 8.77 12.23C8.89 12.39 10.45 14.94 12.92 15.93C14.77 16.67 15.24 16.55 15.74 16.48C16.44 16.38 17.38 15.82 17.62 15.15C17.86 14.48 17.86 13.9 17.79 13.78C17.72 13.66 17.54 13.59 17.27 13.45C17 13.31 15.68 12.66 15.43 12.57C15.18 12.48 15.01 12.44 14.83 12.71C14.65 12.98 14.13 13.59 13.98 13.76C13.82 13.93 13.67 13.95 13.4 13.81C13.13 13.68 12.27 13.4 11.24 12.48C10.44 11.76 9.9 10.88 9.74 10.61C9.59 10.34 9.72 10.19 9.86 10.05C9.98 9.93 10.13 9.73 10.27 9.57C10.41 9.41 10.46 9.29 10.55 9.11C10.64 8.93 10.59 8.78 10.53 8.65C10.46 8.53 9.94 7.24 9.72 6.72C9.51 6.22 9.29 6.28 9.14 6.28L8.64 6.27C8.42 6.27 8.06 6.35 7.78 6.65"/>
+        </svg>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </aside>
 
   <script type="module" src="/src/main.js"></script>
 </body>
