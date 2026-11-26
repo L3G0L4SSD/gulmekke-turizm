@@ -46,6 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 12. Apple-Grade Mobile Drawer Navigation & Sticky Action Bar
   initMobileNav();
+
+  // 13. Google Analytics / Tag Manager Dönüşüm Takibi (WhatsApp, Arama, Teklif)
+  initAnalyticsTracking();
 });
 
 /**
@@ -296,4 +299,48 @@ function initMobileNav() {
       closeDrawer();
     }
   });
+}
+
+/**
+ * 13. Google Analytics & Google Tag Manager Dönüşüm Takibi
+ */
+function initAnalyticsTracking() {
+  const trackEvent = (eventName, params = {}) => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, params);
+    }
+  };
+
+  // Tüm WhatsApp tıklamalarını takip et
+  document.addEventListener('click', (e) => {
+    const waLink = e.target.closest('a[href*="whatsapp.com"], a[href*="wa.me"]');
+    if (waLink) {
+      const locationId = waLink.id || waLink.closest('section')?.id || 'footer_or_bar';
+      trackEvent('whatsapp_click', {
+        event_category: 'conversion',
+        event_label: locationId
+      });
+    }
+
+    // Tüm Telefon Arama (tel:) tıklamalarını takip et
+    const telLink = e.target.closest('a[href^="tel:"]');
+    if (telLink) {
+      trackEvent('phone_call_click', {
+        event_category: 'conversion',
+        event_label: telLink.getAttribute('href')
+      });
+    }
+  });
+
+  // Teklif Formu (Trip Builder) gönderimlerini takip et
+  const tripForm = document.getElementById('trip-builder-form');
+  if (tripForm) {
+    tripForm.addEventListener('submit', () => {
+      const selectedPkg = tripForm.querySelector('input[name="package"]:checked')?.value || 'Genel';
+      trackEvent('generate_lead', {
+        event_category: 'conversion',
+        event_label: selectedPkg
+      });
+    });
+  }
 }
